@@ -14,21 +14,26 @@ class TwitterShillHunter():
     consumer_secret = ''
     target = ''
     oauth = '' 
+    search_terms = []
+    dialect = ''
 
-    def __init__(self, acess_token, access_secret,
-                 consumer_key, consumer_secret):
+    def __init__(self, yaml_dict):
         """"
         Assign tokens and
         secrets needed by
         application
         """
-     
-        self.access_token = access_token
-        self.access_secret = access_secret
-        self.consumer_key = consumer_key
-        self.consumer_secret = consumer_secret
-        self.target = target
-  
+        yaml_to_dict = yaml_dict["config"]
+        self.access_token = yaml_to_dict['access_token']
+        self.access_secret = yaml_to_dict['access_secret']
+        self.consumer_key = yaml_to_dict['consumer_key']
+        self.consumer_secret = yaml_to_dict['consumer_secret']
+        self.target = yaml_to_dict['target']
+        self.search_terms = yaml_to_dict['search_terms'] 
+        self.dialect = yaml_to_dict['dialect']
+        self.authenticate()
+        self.initiate_api()
+
 
     def authenticate(self):
         """
@@ -43,7 +48,9 @@ class TwitterShillHunter():
         """
         Initiate twitter REST API
         """
-     
-        twitter = Twitter(auth=oauth) 
-        twitter.statuses.user_timeline(screen_name=self.target)
+        try: 
+            twitter = Twitter(auth=self.oauth) 
+            twitter.statuses.user_timeline(screen_name=self.target)
+        except Exception as e:
+            print e 
   
