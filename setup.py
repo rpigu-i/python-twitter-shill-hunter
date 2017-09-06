@@ -13,11 +13,15 @@ setup(
     packages=find_packages('src'),
     entry_points={
         'console_script': [
-            'twitter_shill_hunter = twitter_shill.__main__:main'
+            'twitter_shill_hunter = twitter_shill_hunter.__main__:main'
+        ],
+        'twitter_shill_hunter.processors': [
+            'sentiment_analysis = twitter_shill_hunter.processors.sentiment_analysis:SentimentAnalysis'  
         ]
     },
     install_requires=[
         'twitter==1.17.1',
-        'nltk==2.0.5'
+        'nltk==2.0.5',
+        'vaderSentiment'
     ]
 )
