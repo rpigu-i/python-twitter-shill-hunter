@@ -44,7 +44,7 @@ Following this is a list of search terms listed under the
 
 The final value is `dialect` (Note: this value is required but not 
 currently used in the pre-release version).
-Based upon yhe dialect input, tweets will be searched to see if 
+Based upon the dialect input, tweets will be searched to see if 
 they deviate from target dialect. 
 
 For example if the target account is suppose to be using UK English
@@ -64,8 +64,4 @@ Then run
 ```
 python -m twitter_shill_hunter twitter.yaml
 ```
-
-
-
-
 
