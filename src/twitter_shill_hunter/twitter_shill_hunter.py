@@ -38,6 +38,9 @@ class TwitterShillHunter():
         self.processors_plugin = 'twitter_shill_hunter.processors'
         self.loaded_processor_plugin_dict = self.load_plugins(
             self.processors_plugin)
+ 
+        print "Processing target %s" % self.target
+
         self.authenticate()
         self.initiate_api()
  
