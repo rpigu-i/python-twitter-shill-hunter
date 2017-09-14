@@ -16,12 +16,15 @@ setup(
             'twitter_shill_hunter = twitter_shill_hunter.__main__:main'
         ],
         'twitter_shill_hunter.processors': [
-            'sentiment_analysis = twitter_shill_hunter.processors.sentiment_analysis:SentimentAnalysis'  
+            'sentiment_analysis = twitter_shill_hunter.processors.sentiment_analysis:SentimentAnalysis',
+            'grammar_analysis = twitter_shill_hunter.processors.grammar_analysis:GrammarAnalysis'  
         ]
     },
     install_requires=[
         'twitter==1.17.1',
         'nltk==2.0.5',
-        'vaderSentiment'
+        'vaderSentiment',
+        '3to2',
+        'language-check'
     ]
 )
