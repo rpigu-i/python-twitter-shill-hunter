@@ -28,7 +28,7 @@ config:
     search_terms:
         - Hurricane
         - Irma
-    dialect: UK
+    dialect: en-US
 
 
 ```
@@ -42,10 +42,11 @@ The `target` value should be a twitter username or ID.
 Following this is a list of search terms listed under the 
 `search_terms` key.
 
-The final value is `dialect` (Note: this value is required but not 
-currently used in the pre-release version).
+The final value is `dialect` e,g, en-US
 Based upon the dialect input, tweets will be searched to see if 
-they deviate from target dialect. 
+they deviate from target dialect.
+Currently on spelling errors are flagged which is very noisy.
+This will be refined. 
 
 For example if the target account is suppose to be using UK English
 but uses US spellings and grammer, this will be flagged.
