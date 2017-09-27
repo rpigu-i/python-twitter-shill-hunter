@@ -45,11 +45,20 @@ Following this is a list of search terms listed under the
 The final value is `dialect` e,g, en-US
 Based upon the dialect input, tweets will be searched to see if 
 they deviate from target dialect.
-Currently on spelling errors are flagged which is very noisy.
-This will be refined. 
 
 For example if the target account is suppose to be using UK English
 but uses US spellings and grammer, this will be flagged.
+
+Dialects are stored within the package and UK and US English
+are currently supported, with a small list of words currently being matched.
+
+Spelling errors are flagged which is very noisy as URLs and other
+strings will be listed. An option will be added to switch this 
+on/off as required.
+This option may be useful if looking for patterns in spelling 
+mistakes or punctuation errors across a series of 
+different twitter accounts. 
+
 
 
 ## Running the application.
