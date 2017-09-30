@@ -18,10 +18,10 @@ class TwitterShillHunter():
     oauth = '' 
     search_terms = []
     dialect = ''
-    processors_plugin = ''
+    processors_plugin = 'twitter_shill_hunter.processors'
     loaded_processor_plugin_dict = {}
 
-    def __init__(self, yaml_dict):
+    def __init__(self, yaml_dict, plugins):
         """"
         Assign tokens and
         secrets needed by
@@ -35,9 +35,9 @@ class TwitterShillHunter():
         self.target = yaml_to_dict['target']
         self.search_terms = yaml_to_dict['search_terms'] 
         self.dialect = yaml_to_dict['dialect']
-        self.processors_plugin = 'twitter_shill_hunter.processors'
         self.loaded_processor_plugin_dict = self.load_plugins(
-            self.processors_plugin)
+            self.processors_plugin,
+            plugins)
  
         print "Processing target %s" % self.target
 
@@ -45,13 +45,15 @@ class TwitterShillHunter():
         self.initiate_api()
  
 
-    def load_plugins(self, plugin):
+    def load_plugins(self, cat, plugins):
         """
         Load the plugin and store object in array
         """
         plugin_dict = {}
-        for p in pkg_resources.iter_entry_points(plugin):
-            plugin_dict[p.name] = p.load()
+        for p in plugins[cat]:
+            print "Loading plugin %s" % p
+            plugin_dict[p] = pkg_resources.load_entry_point(
+                'twitter_shill_hunter', cat, p)
         return plugin_dict
 
 
