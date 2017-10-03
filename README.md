@@ -53,8 +53,7 @@ Dialects are stored within the package and UK and US English
 are currently supported, with a small list of words currently being matched.
 
 Spelling errors are flagged which is very noisy as URLs and other
-strings will be listed. An option will be added to switch this 
-on/off as required.
+strings will be listed.
 This option may be useful if looking for patterns in spelling 
 mistakes or punctuation errors across a series of 
 different twitter accounts. 
@@ -72,6 +71,16 @@ pip install -e python-twitter-shill-hunter
 Then run
 
 ```
-python -m twitter_shill_hunter twitter.yaml
+python -m twitter_shill_hunter twitter.yaml <list of plugins>
+```
+
+Here the plugins can be: sentiment_analysis, grammar_analysis, spelling_analysis
+
+
+For example:
+
+
+```
+python -m twitter_shill_hunter twitter.yaml sentiment_analysis
 ```
 

@@ -63,7 +63,8 @@ class SentimentAnalysis():
         and sentiment associated with them.
         """
         combined_results = {}
-        compound_result = {}    
+        compound_result = {}
+        agg_compound_val = 0  
 
         for st in search_terms:
             counter = 0 
@@ -75,12 +76,12 @@ class SentimentAnalysis():
                         counter += 1
                     
             if compound_result[st] > 0:
-                compound_result = compound_result / counter
+                agg_compound_val = compound_result[st] / counter
 
         print "Aggregated average compound value for search terms"
-        print compound_result
+        print agg_compound_val
         combined_results['tweets_analyzed'] = self.aggregated_results
-        combined_results['compound_search_results'] = compound_result 
+        combined_results['compound_search_results'] = agg_compound_val 
         return compound_result 
          
  
