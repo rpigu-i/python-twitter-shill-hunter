@@ -52,8 +52,9 @@ class GrammarAnalysis():
                 for word in dialect_words['words']:
                     if word in tweet['text']:
                         print "Dialect is: " + str(dialect.split('/')[-1])
-                        print "Word found is: " + word 
-                 
+                        print "Word found is: " + word
+                
+
 
     def process_input(self, yaml_file):
         """

@@ -18,7 +18,8 @@ setup(
         'twitter_shill_hunter.processors': [
             'sentiment_analysis = twitter_shill_hunter.processors.sentiment_analysis:SentimentAnalysis',
             'grammar_analysis = twitter_shill_hunter.processors.grammar_analysis:GrammarAnalysis',
-            'spelling_analysis = twitter_shill_hunter.processors.spelling_analysis:SpellingAnalysis'  
+            'spelling_analysis = twitter_shill_hunter.processors.spelling_analysis:SpellingAnalysis',
+            'geo_analysis = twitter_shill_hunter.processors.geo_analysis:GeoAnalysis'
         ]
     },
     install_requires=[

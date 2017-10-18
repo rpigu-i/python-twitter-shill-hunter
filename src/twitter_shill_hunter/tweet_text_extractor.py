@@ -26,6 +26,10 @@ class TweetTextExtractor():
             tweet_data = {}
             tweet_data['date'] = i['created_at']
             tweet_data['text'] = i['text']
+            tweet_data['coordinates'] = i['coordinates']
+            tweet_data['place'] = i['place']
+            tweet_data['source'] = i['source']
+            tweet_data['created_at'] = i['created_at']
             self.processed_tweets.append(tweet_data)
 
         return self.processed_tweets

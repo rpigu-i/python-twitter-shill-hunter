@@ -1,5 +1,4 @@
 words:
-
 - accessorize
 - accessorized
 - accessorizes
@@ -605,7 +604,8 @@ words:
 - flavorless
 - flavors
 - flavorsome
-- flier / flyer 
+- flier
+- flyer 
 - fetal
 - fetid
 - fetus
@@ -799,10 +799,10 @@ words:
 - inflection
 - inflections
 - initialize
-initialized
-initializes
-initializing
-initialed
+- initialized
+- initializes
+- initializing
+- initialed
 - initialing
 - install
 - installment
@@ -893,7 +893,6 @@ initialed
 - licenses
 - licensing
 - likable
-- 
 - lionization
 - lionize
 - lionized
@@ -1192,7 +1191,6 @@ initialed
 - filter
 - filters
 - phony
-- 
 - plagiarize
 - plagiarized
 - plagiarizes
