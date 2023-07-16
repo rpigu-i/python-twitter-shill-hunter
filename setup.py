@@ -24,7 +24,7 @@ setup(
     },
     install_requires=[
         'twitter==1.17.1',
-        'nltk==2.0.5',
+        'nltk==3.6.6',
         'vaderSentiment',
         '3to2',
         'language-check'
