@@ -19,7 +19,7 @@ class GrammarAnalysis():
         self.dialect = str(dialect) 
         self.tweets_and_date = tweets_and_date
      
-        print "Chosen language/dialect: " + self.dialect
+        print("Chosen language/dialect: " + self.dialect)
         self.get_lang_dialects()
         self.analyze_dialect()
 
@@ -51,8 +51,8 @@ class GrammarAnalysis():
             for tweet in self.tweets_and_date:
                 for word in dialect_words['words']:
                     if word in tweet['text']:
-                        print "Dialect is: " + str(dialect.split('/')[-1])
-                        print "Word found is: " + word
+                        print("Dialect is: " + str(dialect.split('/')[-1]))
+                        print("Word found is: " + word)
                 
 
 
