@@ -1,4 +1,4 @@
-import language_check
+from spellchecker import SpellChecker
 
 class SpellingAnalysis():
     """
@@ -10,7 +10,7 @@ class SpellingAnalysis():
         """
         Data processing function
         """
-        
+
         scanner = language_check.LanguageTool(dialect)
         print("Chosen language/dialect: " + str(dialect))
 

@@ -15,5 +15,5 @@ class ProcessInputYaml():
         """
         config = {}
         opendoc = open(yamldoc, "r")
-        config = yaml.load(opendoc)
+        config = yaml.safe_load(opendoc)
         return config
