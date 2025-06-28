@@ -7,7 +7,7 @@ setup(
     description='Uses NLP techniques to hunt for potential bot/shill/sock puppet accounts on X',
     maintainer='@rpigu-i',
     license='MIT',
-    url='https://github.com/rpigu-i/pata-password-cracker',
+    url='https://github.com/rpigu-i/twitter-shill-hunter',
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),
