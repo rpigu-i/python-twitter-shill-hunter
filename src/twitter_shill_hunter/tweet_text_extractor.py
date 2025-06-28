@@ -25,7 +25,8 @@ class TweetTextExtractor():
         for i in self.tweet_json:
             tweet_data = {}
             tweet_data['date'] = i['created_at']
-            tweet_data['text'] = i['text']
+            # Handle both 'text' and 'full_text' fields for compatibility
+            tweet_data['text'] = i.get('full_text', i.get('text', ''))
             tweet_data['coordinates'] = i['coordinates']
             tweet_data['place'] = i['place']
             tweet_data['source'] = i['source']
