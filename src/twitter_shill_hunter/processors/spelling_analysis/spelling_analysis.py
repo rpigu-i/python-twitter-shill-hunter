@@ -1,4 +1,4 @@
-import language_check
+from spellchecker import SpellChecker
 
 class SpellingAnalysis():
     """
@@ -11,22 +11,26 @@ class SpellingAnalysis():
         Data processing function
         """
         
-        scanner = language_check.LanguageTool(dialect)
+
+        spell = SpellChecker(language=dialect)
+
         print("Chosen language/dialect: " + str(dialect))
 
         for tweet in tweets_and_date:
-            matches = scanner.check(tweet['text'].encode('ascii', 'ignore').decode('ascii'))
+            # Get words from tweet text
+            words = tweet['text'].lower().split()
+            # Find words that may be misspelled
+            misspelled = spell.unknown(words)
              
-            for i,k in enumerate(matches):
+            for word in misspelled:
                 print("----------------")
-                print("Context: ") 
-                print(matches[i].context.encode('ascii'))
-                print("Rule Id:" + str(matches[i].ruleId))
-                print("Category: " + matches[i].category)
-                print("Based upon language/grammar user may have meant: ")
-                did_you_mean = ""
-                if matches[i].replacements:
-                    for m in matches[i].replacements:
-                        did_you_mean = did_you_mean + m.encode('ascii', 'ignore').decode('ascii') + ' ,'
-                print(did_you_mean)
+                print("Context: " + tweet['text'])
+                print("Misspelled word: " + word)
+                print("Suggestions: ")
+                suggestions = spell.candidates(word)
+                if suggestions:
+                    print(", ".join(list(suggestions)[:5]))  # Show top 5 suggestions
+                else:
+                    print("No suggestions available")
+
 
