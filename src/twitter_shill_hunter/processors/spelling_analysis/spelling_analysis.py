@@ -11,7 +11,9 @@ class SpellingAnalysis():
         Data processing function
         """
         
+
         spell = SpellChecker(language=dialect)
+
         print("Chosen language/dialect: " + str(dialect))
 
         for tweet in tweets_and_date:
@@ -30,4 +32,5 @@ class SpellingAnalysis():
                     print(", ".join(list(suggestions)[:5]))  # Show top 5 suggestions
                 else:
                     print("No suggestions available")
+
 
