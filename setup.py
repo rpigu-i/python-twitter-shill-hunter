@@ -6,6 +6,7 @@ setup(
     version='2.0.0',
     description='Uses NLP techniques to hunt for potential bot/shill/sock puppet accounts on X',
     maintainer='@rpigu-i',
+    maintainer_email='rpigu.i@example.com',
     license='MIT',
     url='https://github.com/rpigu-i/twitter-shill-hunter',
     package_dir={'': 'src'},
