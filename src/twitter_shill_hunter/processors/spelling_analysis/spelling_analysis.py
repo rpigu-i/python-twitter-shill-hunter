@@ -31,16 +31,19 @@ class SpellingAnalysis():
                 if isinstance(context, str):
                     context = ''.join(char for char in context if ord(char) < 128)
                 print(context)
+
                 print("Rule Id:" + str(matches[i].ruleId))
                 print("Category: " + matches[i].category)
                 print("Based upon language/grammar user may have meant: ")
                 did_you_mean = ""
                 if matches[i].replacements:
                     for m in matches[i].replacements:
+
                         # Handle replacement text safely
                         replacement = m
                         if isinstance(replacement, str):
                             replacement = ''.join(char for char in replacement if ord(char) < 128)
                         did_you_mean = did_you_mean + replacement + ' ,'
                 print(did_you_mean)
+
 
