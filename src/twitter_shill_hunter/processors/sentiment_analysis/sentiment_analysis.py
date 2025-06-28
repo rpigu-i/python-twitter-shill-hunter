@@ -28,15 +28,15 @@ class SentimentAnalysis():
                 result = {}
                 search_terms_found = []
 
-                print "The following search terms were found:"
+                print("The following search terms were found:")
 
                 for w in words_found:
-                     print w
+                     print(w)
                      search_terms_found.append(w)
 
 
-                print tweet['date']
-                print tweet['text'] 
+                print(tweet['date'])
+                print(tweet['text']) 
                 
                 result['date'] =  tweet['date']
                 result['tweet'] = tweet['text']
@@ -44,15 +44,15 @@ class SentimentAnalysis():
                   
                 sps = sia.polarity_scores(tweet['text'])
                 for k in sps:
-                    print "%s value is: %s" % (k,sps[k])
+                    print("%s value is: %s" % (k,sps[k]))
                     result[k] = sps[k]
                 
-                print "-------------------------"
+                print("-------------------------")
                 self.aggregated_results.append(result)
             else:
-                print "No search terms found in tweet on:"
-                print tweet['date'] 
-                print "-------------------------"          
+                print("No search terms found in tweet on:")
+                print(tweet['date']) 
+                print("-------------------------")          
 
         self.aggregate_search_results(search_terms)
 
@@ -78,8 +78,8 @@ class SentimentAnalysis():
             if compound_result[st] > 0:
                 agg_compound_val = compound_result[st] / counter
 
-        print "Aggregated average compound value for search terms"
-        print agg_compound_val
+        print("Aggregated average compound value for search terms")
+        print(agg_compound_val)
         combined_results['tweets_analyzed'] = self.aggregated_results
         combined_results['compound_search_results'] = agg_compound_val 
         return compound_result 
