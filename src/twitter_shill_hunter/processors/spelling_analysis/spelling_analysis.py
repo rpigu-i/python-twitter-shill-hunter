@@ -1,4 +1,4 @@
-import language_check
+from spellchecker import SpellChecker
 
 class SpellingAnalysis():
     """
@@ -12,11 +12,16 @@ class SpellingAnalysis():
         """
         
         scanner = language_check.LanguageTool(dialect)
+
         print("Chosen language/dialect: " + str(dialect))
 
         for tweet in tweets_and_date:
-            matches = scanner.check(tweet['text'].encode('ascii', 'ignore').decode('ascii'))
+            # Get words from tweet text
+            words = tweet['text'].lower().split()
+            # Find words that may be misspelled
+            misspelled = spell.unknown(words)
              
+
             for i,k in enumerate(matches):
                 print("----------------")
                 print("Context: ") 
@@ -29,4 +34,5 @@ class SpellingAnalysis():
                     for m in matches[i].replacements:
                         did_you_mean = did_you_mean + m.encode('ascii', 'ignore').decode('ascii') + ' ,'
                 print(did_you_mean)
+
 
