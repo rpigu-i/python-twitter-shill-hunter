@@ -11,8 +11,7 @@ class SpellingAnalysis():
         Data processing function
         """
         
-
-        spell = SpellChecker(language=dialect)
+        scanner = language_check.LanguageTool(dialect)
 
         print("Chosen language/dialect: " + str(dialect))
 
@@ -22,15 +21,18 @@ class SpellingAnalysis():
             # Find words that may be misspelled
             misspelled = spell.unknown(words)
              
-            for word in misspelled:
+
+            for i,k in enumerate(matches):
                 print("----------------")
-                print("Context: " + tweet['text'])
-                print("Misspelled word: " + word)
-                print("Suggestions: ")
-                suggestions = spell.candidates(word)
-                if suggestions:
-                    print(", ".join(list(suggestions)[:5]))  # Show top 5 suggestions
-                else:
-                    print("No suggestions available")
+                print("Context: ") 
+                print(matches[i].context.encode('ascii'))
+                print("Rule Id:" + str(matches[i].ruleId))
+                print("Category: " + matches[i].category)
+                print("Based upon language/grammar user may have meant: ")
+                did_you_mean = ""
+                if matches[i].replacements:
+                    for m in matches[i].replacements:
+                        did_you_mean = did_you_mean + m.encode('ascii', 'ignore').decode('ascii') + ' ,'
+                print(did_you_mean)
 
 

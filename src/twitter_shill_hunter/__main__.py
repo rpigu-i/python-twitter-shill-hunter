@@ -1,7 +1,7 @@
 import argparse
-from input import ProcessInputYaml
-from gen_logo import Logo
-from twitter_shill_hunter import TwitterShillHunter
+from .input import ProcessInputYaml
+from .gen_logo import Logo
+from .twitter_shill_hunter import TwitterShillHunter
 
 def main():
     """

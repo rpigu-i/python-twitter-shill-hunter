@@ -90,12 +90,13 @@ class TwitterShillHunter():
         for p in self.loaded_processor_plugin_dict:
             dynamic_args = []
 
-            params_to_pass = inspect.signature(self.loaded_processor_plugin_dict[p]().process_data)
+            params_to_pass = inspect.getfullargspec(self.loaded_processor_plugin_dict[p]().process_data)
 
             dynamic_args.append(tweets_and_time)
-            for param_name in params_to_pass.parameters:
-                if param_name != 'tweets_and_date' and param_name != 'self': 
-                    dynamic_args.append(getattr(self, param_name))
+            for f in params_to_pass.args:
+                if f != 'tweets_and_date' and f != 'self': 
+                    dynamic_args.append(eval('self.'+f))
+
                
             self.call_processor(p, dynamic_args)
 
