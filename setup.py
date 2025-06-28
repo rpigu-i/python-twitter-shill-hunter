@@ -9,6 +9,7 @@ setup(
     author_email='rpigu.i@example.com',
     license='MIT',
     url='https://github.com/rpigu-i/twitter-shill-hunter',
+    python_requires='>=3.8',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -17,6 +18,10 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
     ],
@@ -37,8 +42,6 @@ setup(
     install_requires=[
         'tweepy>=4.0.0',
         'nltk==3.9',
-        'vaderSentiment',
-        '3to2',
-        'language-check'
+        'twitter>=1.19.0'
     ]
 )

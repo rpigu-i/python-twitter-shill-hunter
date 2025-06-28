@@ -51,7 +51,9 @@ class SentimentAnalysis():
                 self.aggregated_results.append(result)
             else:
                 print("No search terms found in tweet on:")
+
                 print(tweet['date'])
+
                 print("-------------------------")          
 
         self.aggregate_search_results(search_terms)

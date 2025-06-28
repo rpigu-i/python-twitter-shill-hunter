@@ -1,4 +1,4 @@
-import language_check
+from spellchecker import SpellChecker
 
 class SpellingAnalysis():
     """
@@ -10,23 +10,40 @@ class SpellingAnalysis():
         """
         Data processing function
         """
-        
+
         scanner = language_check.LanguageTool(dialect)
-        print "Chosen language/dialect: " + str(dialect)
+        print("Chosen language/dialect: " + str(dialect))
 
         for tweet in tweets_and_date:
-            matches = scanner.check(tweet['text'].encode('ascii', 'ignore').decode('ascii'))
+            # Handle Unicode text properly for Python 3
+            tweet_text = tweet['text']
+            if isinstance(tweet_text, str):
+                # Remove non-ASCII characters safely
+                tweet_text = ''.join(char for char in tweet_text if ord(char) < 128)
+            
+            matches = scanner.check(tweet_text)
              
             for i,k in enumerate(matches):
-                print "----------------"
-                print "Context: " 
-                print matches[i].context.encode('ascii')
-                print "Rule Id:" + str(matches[i].ruleId)
-                print "Category: " + matches[i].category
-                print "Based upon language/grammar user may have meant: "
+                print("----------------")
+                print("Context: ") 
+                # Handle context encoding safely
+                context = matches[i].context
+                if isinstance(context, str):
+                    context = ''.join(char for char in context if ord(char) < 128)
+                print(context)
+
+                print("Rule Id:" + str(matches[i].ruleId))
+                print("Category: " + matches[i].category)
+                print("Based upon language/grammar user may have meant: ")
                 did_you_mean = ""
                 if matches[i].replacements:
                     for m in matches[i].replacements:
-                        did_you_mean = did_you_mean + m.encode('ascii', 'ignore').decode('ascii') + ' ,'
-                print did_you_mean
+
+                        # Handle replacement text safely
+                        replacement = m
+                        if isinstance(replacement, str):
+                            replacement = ''.join(char for char in replacement if ord(char) < 128)
+                        did_you_mean = did_you_mean + replacement + ' ,'
+                print(did_you_mean)
+
 
