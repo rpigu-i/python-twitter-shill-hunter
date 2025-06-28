@@ -40,9 +40,8 @@ setup(
         ]
     },
     install_requires=[
-        'twitter>=1.19.0',
-        'nltk>=3.8',
-        'vaderSentiment',
-        'pyspellchecker'
+        'tweepy>=4.0.0',
+        'nltk==3.9',
+        'twitter>=1.19.0'
     ]
 )

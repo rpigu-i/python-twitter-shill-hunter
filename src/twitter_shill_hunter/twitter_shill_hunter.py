@@ -1,13 +1,13 @@
 import pkg_resources
 import json
 import inspect
-from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
+import tweepy
 from .tweet_text_extractor import TweetTextExtractor 
 
 class TwitterShillHunter():
     """
     Class for analyzing a users
-    historical tweets
+    historical posts on X (formerly Twitter)
     """
 
     access_token = ''
@@ -15,7 +15,7 @@ class TwitterShillHunter():
     consumer_key = ''
     consumer_secret = ''
     target = ''
-    oauth = '' 
+    api = None
     search_terms = []
     dialect = ''
     processors_plugin = 'twitter_shill_hunter.processors'
@@ -59,22 +59,36 @@ class TwitterShillHunter():
 
     def authenticate(self):
         """
-        Create Oauth 
+        Create X API authentication 
         """
 
-        self.oauth = OAuth(self.access_token, self.access_secret, 
-                          self.consumer_key, self.consumer_secret)
+        auth = tweepy.OAuth1UserHandler(
+            self.consumer_key, self.consumer_secret,
+            self.access_token, self.access_secret
+        )
+        self.api = tweepy.API(auth, wait_on_rate_limit=True)
  
 
     def initiate_api(self):
         """
-        Initiate twitter REST API
-        and grab list of targets tweets. 
+        Initiate X API and grab list of target's posts.
         """
         try: 
-            twitter = Twitter(auth=self.oauth) 
-            get_tweets = twitter.statuses.user_timeline(screen_name=self.target, exclude_replies=True)
-            tweet_extractor = TweetTextExtractor(get_tweets)
+            # Get user timeline using tweepy
+            get_tweets = self.api.user_timeline(
+                screen_name=self.target, 
+                exclude_replies=True,
+                include_rts=False,
+                count=200,
+                tweet_mode='extended'
+            )
+            
+            # Convert tweepy Status objects to dict format expected by TweetTextExtractor
+            tweets_json = []
+            for tweet in get_tweets:
+                tweets_json.append(tweet._json)
+            
+            tweet_extractor = TweetTextExtractor(tweets_json)
             tweets_and_time = tweet_extractor.extract_text()
             self.load_processors(tweets_and_time)
         except Exception as e:
