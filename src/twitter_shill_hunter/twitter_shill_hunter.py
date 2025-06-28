@@ -94,7 +94,7 @@ class TwitterShillHunter():
             dynamic_args.append(tweets_and_time)
             for param_name in params_to_pass.parameters:
                 if param_name != 'tweets_and_date' and param_name != 'self': 
-                    dynamic_args.append(eval('self.'+param_name))
+                    dynamic_args.append(getattr(self, param_name))
                
             self.call_processor(p, dynamic_args)
 
