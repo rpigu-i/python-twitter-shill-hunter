@@ -9,8 +9,9 @@ class GrammarAnalysis():
     grammar from tweets
     """
 
-    dialect = ""
-    valid_dialects = []
+    def __init__(self):
+        self.dialect = ""
+        self.valid_dialects = []
 
     def process_data(self, tweets_and_date, dialect):
         """

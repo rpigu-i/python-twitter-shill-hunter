@@ -1,4 +1,4 @@
-from spellchecker import SpellChecker
+import language_check
 
 class SpellingAnalysis():
     """

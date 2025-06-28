@@ -2,12 +2,13 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 class SentimentAnalysis():
     """
-    Class to dervice sentiment
+    Class to derive sentiment
     from tweets based upon a 
     list of provided keywords
     """
     
-    aggregated_results = []
+    def __init__(self):
+        self.aggregated_results = []
 
 
     def process_data(self, tweets_and_date, search_terms):
@@ -66,7 +67,8 @@ class SentimentAnalysis():
         """
         combined_results = {}
         compound_result = {}
-        agg_compound_val = 0  
+        total_compound_val = 0
+        total_count = 0
 
         for st in search_terms:
             counter = 0 
@@ -77,8 +79,13 @@ class SentimentAnalysis():
                         compound_result[st] += r['compound']
                         counter += 1
                     
-            if compound_result[st] > 0:
-                agg_compound_val = compound_result[st] / counter
+            if counter > 0:
+                compound_result[st] = compound_result[st] / counter
+                total_compound_val += compound_result[st]
+                total_count += 1
+
+        # Calculate overall average compound value
+        agg_compound_val = total_compound_val / total_count if total_count > 0 else 0
 
         print("Aggregated average compound value for search terms")
         print(agg_compound_val)
