@@ -11,6 +11,6 @@ class GeoAnalysis():
         """
 
         for tweet in tweets_and_date:
-            print tweet['created_at']
-            print tweet['coordinates']
-            print tweet['source']
+            print(tweet['created_at'])
+            print(tweet['coordinates'])
+            print(tweet['source'])

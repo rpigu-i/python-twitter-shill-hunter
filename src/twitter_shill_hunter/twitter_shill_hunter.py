@@ -39,7 +39,7 @@ class TwitterShillHunter():
             self.processors_plugin,
             plugins)
  
-        print "Processing target %s" % self.target
+        print("Processing target %s" % self.target)
 
         self.authenticate()
         self.initiate_api()
@@ -51,7 +51,7 @@ class TwitterShillHunter():
         """
         plugin_dict = {}
         for p in plugins[cat]:
-            print "Loading plugin %s" % p
+            print("Loading plugin %s" % p)
             plugin_dict[p] = pkg_resources.load_entry_point(
                 'twitter_shill_hunter', cat, p)
         return plugin_dict
@@ -78,7 +78,7 @@ class TwitterShillHunter():
             tweets_and_time = tweet_extractor.extract_text()
             self.load_processors(tweets_and_time)
         except Exception as e:
-            print e 
+            print(e) 
 
     def load_processors(self, tweets_and_time):
         """
