@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='twitter-shill-hunter',
-    version='2.0',
+    version='2.0.0',
     description='Uses NLP techniques to hunt for potential bot/shill/sock puppet accounts on X',
     maintainer='@rpigu-i',
     license='MIT',
