@@ -89,7 +89,7 @@ class TwitterShillHunter():
  
         for p in self.loaded_processor_plugin_dict:
             dynamic_args = []
-            params_to_pass = inspect.getargspec(self.loaded_processor_plugin_dict[p]().process_data)
+            params_to_pass = inspect.getfullargspec(self.loaded_processor_plugin_dict[p]().process_data)
 
             dynamic_args.append(tweets_and_time)
             for f in params_to_pass[0]:
