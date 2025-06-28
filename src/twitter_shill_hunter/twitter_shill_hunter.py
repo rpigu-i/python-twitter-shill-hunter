@@ -39,7 +39,7 @@ class TwitterShillHunter():
             self.processors_plugin,
             plugins)
  
-        print "Processing target %s" % self.target
+        print("Processing target %s" % self.target)
 
         self.authenticate()
         self.initiate_api()
@@ -51,7 +51,7 @@ class TwitterShillHunter():
         """
         plugin_dict = {}
         for p in plugins[cat]:
-            print "Loading plugin %s" % p
+            print("Loading plugin %s" % p)
             plugin_dict[p] = pkg_resources.load_entry_point(
                 'twitter_shill_hunter', cat, p)
         return plugin_dict
@@ -78,7 +78,7 @@ class TwitterShillHunter():
             tweets_and_time = tweet_extractor.extract_text()
             self.load_processors(tweets_and_time)
         except Exception as e:
-            print e 
+            print(e) 
 
     def load_processors(self, tweets_and_time):
         """
@@ -89,10 +89,10 @@ class TwitterShillHunter():
  
         for p in self.loaded_processor_plugin_dict:
             dynamic_args = []
-            params_to_pass = inspect.getargspec(self.loaded_processor_plugin_dict[p]().process_data)
+            params_to_pass = inspect.getfullargspec(self.loaded_processor_plugin_dict[p]().process_data)
 
             dynamic_args.append(tweets_and_time)
-            for f in params_to_pass[0]:
+            for f in params_to_pass.args:
                 if f != 'tweets_and_date' and f != 'self': 
                     dynamic_args.append(eval('self.'+f))
                
