@@ -11,7 +11,7 @@ class SpellingAnalysis():
         Data processing function
         """
         
-        spell = SpellChecker()
+        spell = SpellChecker(language=dialect)
         print("Chosen language/dialect: " + str(dialect))
 
         for tweet in tweets_and_date:
