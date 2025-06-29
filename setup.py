@@ -44,6 +44,7 @@ setup(
         'nltk==3.9',
         'twitter>=1.19.0',
         'vaderSentiment>=3.3.2',
-        'pyspellchecker>=0.7.0'
+        'pyspellchecker>=0.7.0',
+        'language-tool-python>=2.7.0'
     ]
 )
