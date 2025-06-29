@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     packages=find_packages('src'),
     entry_points={
-        'console_script': [
+        'console_scripts': [
             'twitter_shill_hunter = twitter_shill_hunter.__main__:main'
         ],
         'twitter_shill_hunter.processors': [
