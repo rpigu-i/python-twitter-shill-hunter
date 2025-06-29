@@ -1,5 +1,10 @@
 import sys
 
+# Note: This module previously used the 'language-check' package which had installation
+# issues due to external resource downloads and Java version parsing problems.
+# It has been replaced with a simple stub implementation that maintains API compatibility.
+# For production use, consider replacing with 'language-tool-python' or similar alternatives.
+
 class LanguageToolMatch:
     """Mock match object compatible with language-check API"""
     def __init__(self, context, rule_id, category, replacements):
