@@ -42,6 +42,9 @@ setup(
     install_requires=[
         'tweepy>=4.0.0',
         'nltk==3.9',
-        'twitter>=1.19.0'
+        'twitter>=1.19.0',
+        'vaderSentiment>=3.3.2',
+        'language-check>=1.1',
+        'pyspellchecker>=0.7.0'
     ]
 )
