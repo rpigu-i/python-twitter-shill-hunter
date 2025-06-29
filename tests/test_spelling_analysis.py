@@ -4,7 +4,7 @@ Unit tests for SpellingAnalysis processor
 import unittest
 from unittest.mock import patch, MagicMock
 from twitter_shill_hunter.processors.spelling_analysis.spelling_analysis import SpellingAnalysis
-from tests.mock_data import SAMPLE_PROCESSED_TWEETS, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS
+from mock_data import SAMPLE_PROCESSED_TWEETS, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS
 
 
 class TestSpellingAnalysis(unittest.TestCase):
