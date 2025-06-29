@@ -4,7 +4,7 @@ Unit tests for SentimentAnalysis processor
 import unittest
 from unittest.mock import patch, MagicMock
 from twitter_shill_hunter.processors.sentiment_analysis.sentiment_analysis import SentimentAnalysis
-from tests.mock_data import SAMPLE_PROCESSED_TWEETS
+from mock_data import SAMPLE_PROCESSED_TWEETS
 
 
 class TestSentimentAnalysis(unittest.TestCase):

@@ -4,7 +4,7 @@ Unit tests for TwitterShillHunter main class with mocked Twitter/X API
 import unittest
 from unittest.mock import patch, MagicMock, Mock
 from twitter_shill_hunter.twitter_shill_hunter import TwitterShillHunter
-from tests.mock_data import SAMPLE_CONFIG, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS, MIXED_TWEETS
+from mock_data import SAMPLE_CONFIG, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS, MIXED_TWEETS
 
 
 class MockTweepyStatus:

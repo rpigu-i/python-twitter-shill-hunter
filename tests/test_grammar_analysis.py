@@ -4,7 +4,7 @@ Unit tests for GrammarAnalysis processor
 import unittest
 from unittest.mock import patch, MagicMock
 from twitter_shill_hunter.processors.grammar_analysis.grammar_analysis import GrammarAnalysis
-from tests.mock_data import SAMPLE_PROCESSED_TWEETS, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS
+from mock_data import SAMPLE_PROCESSED_TWEETS, UK_ENGLISH_TWEETS, US_ENGLISH_TWEETS
 
 
 class TestGrammarAnalysis(unittest.TestCase):
