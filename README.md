@@ -68,6 +68,8 @@ Clone the source code from git and install via pip.
 pip install -e python-twitter-shill-hunter
 ```
 
+The package now uses modern PEP 517/518 packaging standards to resolve pip deprecation warnings and build issues.
+
 Then run
 
 ```
