@@ -15,8 +15,16 @@ class SpellingAnalysis():
         Data processing function
         """
 
-        scanner = language_tool_python.LanguageTool(dialect)
-        print("Chosen language/dialect: " + str(dialect))
+        try:
+            scanner = language_tool_python.LanguageTool(dialect)
+            print("Chosen language/dialect: " + str(dialect))
+        except Exception as e:
+            print(f"Warning: Could not initialize LanguageTool for dialect '{dialect}': {e}")
+            print("Falling back to no grammar/spelling checking for this session.")
+            # Process tweets without grammar checking
+            for tweet in tweets_and_date:
+                pass  # Just iterate through without analysis
+            return
 
         try:
             for tweet in tweets_and_date:
@@ -52,5 +60,8 @@ class SpellingAnalysis():
                     print(did_you_mean)
         finally:
             # Always close the LanguageTool instance to clean up resources
-            scanner.close()
+            try:
+                scanner.close()
+            except:
+                pass  # Ignore errors during cleanup
 

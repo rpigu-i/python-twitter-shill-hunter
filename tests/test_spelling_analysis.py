@@ -222,6 +222,22 @@ class TestSpellingAnalysis(unittest.TestCase):
             # Should call check for each tweet
             self.assertEqual(mock_scanner.check.call_count, 3)
 
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_tool_python.LanguageTool')
+    def test_process_data_handles_languagetool_initialization_error(self, mock_language_tool_class):
+        """Test that initialization errors are handled gracefully"""
+        # Mock LanguageTool constructor to raise an exception
+        mock_language_tool_class.side_effect = Exception("Network error: Cannot download LanguageTool")
+        
+        tweets = [
+            {'text': 'Test tweet with potential errors', 'date': 'test_date'}
+        ]
+        
+        # Should complete without raising exception, just print warning
+        self.spelling_analyzer.process_data(tweets, 'en-US')
+        
+        # Verify LanguageTool was attempted to be instantiated
+        mock_language_tool_class.assert_called_once_with('en-US')
+
 
 if __name__ == '__main__':
     unittest.main()
