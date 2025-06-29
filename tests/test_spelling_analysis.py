@@ -27,7 +27,7 @@ class TestSpellingAnalysis(unittest.TestCase):
             }
         ]
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_with_uk_dialect(self, mock_language_tool_class):
         """Test spelling analysis with UK English dialect"""
         # Mock LanguageTool
@@ -51,7 +51,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         # Verify check was called for each tweet
         self.assertEqual(mock_scanner.check.call_count, len(self.uk_tweets_processed))
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_with_us_dialect(self, mock_language_tool_class):
         """Test spelling analysis with US English dialect"""
         mock_scanner = MagicMock()
@@ -67,7 +67,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         # Verify check was called
         mock_scanner.check.assert_called()
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_handles_unicode_text(self, mock_language_tool_class):
         """Test that process_data handles Unicode text correctly"""
         mock_scanner = MagicMock()
@@ -92,7 +92,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         self.assertNotIn('é', call_args)
         self.assertNotIn('á', call_args)
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_handles_spelling_matches(self, mock_language_tool_class):
         """Test handling of spelling matches with context and replacements"""
         mock_scanner = MagicMock()
@@ -123,7 +123,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         # Verify the method handles both matches without error
         mock_scanner.check.assert_called_once()
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_empty_tweets(self, mock_language_tool_class):
         """Test process_data with empty tweets list"""
         mock_scanner = MagicMock()
@@ -137,7 +137,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         # But check should not be called since no tweets
         mock_scanner.check.assert_not_called()
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_handles_bytes_text(self, mock_language_tool_class):
         """Test that process_data handles bytes text correctly"""
         mock_scanner = MagicMock()
@@ -154,7 +154,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         self.spelling_analyzer.process_data(tweets, 'en-US')
         mock_scanner.check.assert_called()
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_handles_match_with_unicode_context(self, mock_language_tool_class):
         """Test handling matches with Unicode characters in context"""
         mock_scanner = MagicMock()
@@ -179,7 +179,7 @@ class TestSpellingAnalysis(unittest.TestCase):
         
         mock_scanner.check.assert_called_once()
 
-    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool')
+    @patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool')
     def test_process_data_no_replacements(self, mock_language_tool_class):
         """Test handling matches with no replacement suggestions"""
         mock_scanner = MagicMock()
@@ -206,7 +206,7 @@ class TestSpellingAnalysis(unittest.TestCase):
 
     def test_process_data_multiple_tweets(self):
         """Test processing multiple tweets"""
-        with patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.language_check.LanguageTool') as mock_lt:
+        with patch('twitter_shill_hunter.processors.spelling_analysis.spelling_analysis.LanguageTool') as mock_lt:
             mock_scanner = MagicMock()
             mock_lt.return_value = mock_scanner
             mock_scanner.check.return_value = []
