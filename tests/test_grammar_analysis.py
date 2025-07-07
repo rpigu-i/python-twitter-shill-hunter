@@ -167,7 +167,7 @@ class TestGrammarAnalysis(unittest.TestCase):
                 
                 # Verify resource_filename was called with correct language
                 mock_resource_filename.assert_called_once_with(
-                    'twitter_shill_hunter.processors.grammar_analysis', 
+                    'twitter_shill_hunter.processors.grammar_analysis.grammar_analysis', 
                     '/dialect_mappings/fr'
                 )
 
